@@ -1,5 +1,6 @@
 package application;
 
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
@@ -42,6 +43,13 @@ public class UI {
         }catch (RuntimeException e){
             throw new InputMismatchException("Erro ao ler as posições do xadrez. As posições válidas são de a1 à h8.");
         }
+    }
+
+    public static void printMatch(ChessMatch chessMatch){
+        printBoard(chessMatch.getPieces());
+        System.out.println();
+        System.out.println("Turno: " + chessMatch.getTurn());
+        System.out.println("Aguardando jogador: " + chessMatch.getCurrentPlayer());
     }
 
     public static void printBoard(ChessPiece[][] pieces){
