@@ -5,6 +5,7 @@ import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -54,10 +55,16 @@ public class UI {
         printCapturePieses(captured);
         System.out.println();
         System.out.println("Turno: " + chessMatch.getTurn());
-        System.out.println("Aguardando jogador: " + chessMatch.getCurrentPlayer());
-        if(chessMatch.getCheck()){
-            System.out.println("CHECK!");
+        if(!chessMatch.getCheckMate()) {
+            System.out.println("Esperando jogador: " + chessMatch.getCurrentPlayer());
+            if (chessMatch.getCheck()) {
+                System.out.println("CHECK!");
+            }
         }
+        else{
+                System.out.println("CHECKMATE!");
+                System.out.println("Vencedor: " + chessMatch.getCurrentPlayer());
+            }
     }
 
     public static void printBoard(ChessPiece[][] pieces){
